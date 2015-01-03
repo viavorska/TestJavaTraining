@@ -38,4 +38,16 @@ public class ContactHelper extends HelperBase{
 	    type(By.name("phone2"), contact.secondaryPhone);
 	}
 
+	public void initContactModification() {
+		click(By.cssSelector("img[alt=\"Edit\"]"));
+	}
+
+	public void submitContactModification() {
+		click(By.name("update"));
+	}
+	
+	public void submitContactRemoval() {
+		driver.findElement(By.xpath("(//input[@name='update'])[2]")).click();		  
+	}
+
 }
