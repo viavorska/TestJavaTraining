@@ -1,6 +1,10 @@
 package com.example.fw;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import com.example.tests.ContactData;
 
@@ -48,6 +52,19 @@ public class ContactHelper extends HelperBase{
 	
 	public void submitContactRemoval() {
 		driver.findElement(By.xpath("(//input[@name='update'])[2]")).click();		  
+	}
+
+	public List<ContactData> getContacts() {
+		List<ContactData> contacts = new ArrayList<ContactData>();
+	    List<WebElement> entries = driver.findElements(By.name("entry"));
+	    for (WebElement entry : entries) {
+	    	List<WebElement> cells = driver.findElements(By.tagName("td"));
+	    	ContactData contact = new ContactData();
+	    	contact.firstName = cells.get(1).getText();
+			contacts.add(contact);		
+	    						
+		}
+		return contacts;
 	}
 
 }
