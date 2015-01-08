@@ -44,7 +44,7 @@ public class GroupHelper extends HelperBase{
 	}
 	
 	public void selectGroupByGroupIndex(int index) {
-		click(By.xpath("//input[@name='selected[]'][" + index + "]"));
+		click(By.xpath("//input[@name='selected[]'][" + (index+1) + "]"));
 	}
 
 	public void submitGroupModification() {
@@ -58,8 +58,8 @@ public class GroupHelper extends HelperBase{
 	    for (WebElement checkbox : checkboxes) {
 			GroupData group = new GroupData();
 			String title = checkbox.getAttribute("title");
-			group.groupName = title.substring("Select(".length(), title.length() - ")".length()); 
-			groups.add(group) ;			
+			group.groupName = title.substring("Select(".length()+1, title.length() - ")".length()); 
+			groups.add(group);			
 		}
 		return groups;
 	}
