@@ -26,6 +26,7 @@ public class GroupRemovalTests extends TestBase {
 	    
 	    //compare states
 	    oldGroupList.remove(0);
+	    Collections.sort(newGroupList);
 	    Collections.sort(oldGroupList);
 	    assertEquals(newGroupList, oldGroupList);	
 	}
