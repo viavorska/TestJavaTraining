@@ -42,8 +42,11 @@ public class ContactHelper extends HelperBase{
 	    type(By.name("phone2"), contact.secondaryPhone);
 	}
 
-	public void initContactModification() {
-		click(By.cssSelector("img[alt=\"Edit\"]"));
+	public void initContactModification(int index) {
+		//driver.findElements(By.name("entry"))(index);
+		//click(By.cssSelector("img[alt=\"Edit\"]"));s
+		click(By.xpath("(//img[@alt='Edit'])[" + (index+1) + "]"));
+		//driver.findElements(By.name("entry"))(index).findElement(By.cssSelector("img[alt=\"Edit\"]")).click();
 	}
 
 	public void submitContactModification() {
@@ -58,7 +61,7 @@ public class ContactHelper extends HelperBase{
 		List<ContactData> contacts = new ArrayList<ContactData>();
 	    List<WebElement> entries = driver.findElements(By.name("entry"));
 	    for (WebElement entry : entries) {
-	    	List<WebElement> cells = driver.findElements(By.tagName("td"));
+	    	List<WebElement> cells = entry.findElements(By.tagName("td"));
 	    	ContactData contact = new ContactData();
 	    	contact.firstName = cells.get(2).getText();
 			contacts.add(contact);		    						
