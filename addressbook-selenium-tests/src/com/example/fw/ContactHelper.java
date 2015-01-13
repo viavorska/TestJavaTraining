@@ -60,9 +60,8 @@ public class ContactHelper extends HelperBase{
 	    for (WebElement entry : entries) {
 	    	List<WebElement> cells = driver.findElements(By.tagName("td"));
 	    	ContactData contact = new ContactData();
-	    	contact.firstName = cells.get(1).getText();
-			contacts.add(contact);		
-	    						
+	    	contact.firstName = cells.get(2).getText();
+			contacts.add(contact);		    						
 		}
 		return contacts;
 	}

@@ -34,6 +34,7 @@ public class GroupCreationTests extends TestBase {
     assertEquals(newGroupList.size(), oldGroupList.size() + 1);
     
     oldGroupList.add(group);
+    Collections.sort(newGroupList);
     Collections.sort(oldGroupList);
     assertEquals(newGroupList, oldGroupList);
   }
@@ -61,6 +62,7 @@ public class GroupCreationTests extends TestBase {
     assertEquals(newGroupList.size(), oldGroupList.size() + 1);
     
     oldGroupList.add(group);
+    Collections.sort(newGroupList);
     Collections.sort(oldGroupList);
     assertEquals(newGroupList, oldGroupList);
     

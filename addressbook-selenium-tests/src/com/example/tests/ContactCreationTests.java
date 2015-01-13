@@ -43,6 +43,7 @@ public class ContactCreationTests extends TestBase{
 	    assertEquals(newContactList.size(), oldContactList.size() + 1);
 	    
 	    oldContactList.add(contact);
+	    Collections.sort(newContactList);
 	    Collections.sort(oldContactList);
 	    assertEquals(newContactList, oldContactList);
 	  }
@@ -50,11 +51,26 @@ public class ContactCreationTests extends TestBase{
 	  @Test
 	  public void testEmptyContactCreation() throws Exception {
 		app.getNavigationHelper().openMainPage();
+	    
+	    //save old state
+	    List<ContactData> oldContactList = app.getContactHelper().getContacts();
+	    
+	    //actions	
 	    app.getContactHelper().initContactCreation();
 	    ContactData contact = new ContactData();
 	    app.getContactHelper().fillContactForm(contact);
 	    app.getContactHelper().submitContactCreation();
 	    app.getContactHelper().returnToContactsPage();
+	    
+	    //save new state
+	    List<ContactData> newContactList = app.getContactHelper().getContacts();
+	    
+	    //compare states
+	    
+	    oldContactList.add(contact);
+	    Collections.sort(newContactList);
+	    Collections.sort(oldContactList);
+	    assertEquals(newContactList, oldContactList);
 	  }
 
 }
